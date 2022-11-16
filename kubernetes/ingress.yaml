@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dockerecho-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+    - host: arch.homework
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dockerecho-service
+                port:
+                  number: 80
+          - path: /otusapp/.+(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: dockerecho-service
+                port:
+                  number: 81
