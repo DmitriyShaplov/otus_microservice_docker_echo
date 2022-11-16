@@ -15,7 +15,7 @@ spec:
               service:
                 name: dockerecho-service
                 port:
-                  number: 80
+                  number: 81
           - path: /otusapp/.+(/|$)(.*)
             pathType: Prefix
             backend:
